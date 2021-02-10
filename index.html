@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>GameOn</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Nav -->
+    <div class="topnav" id="topnav">
+        <div class="header-logo">
+            <img alt="Logo GameOn" src="./assets/img/logo/GameOn.png" />
+        </div>
+        <div class="navbar-main">
+            <a class="active item" href="#"><span>Event details</span></a>
+            <a class="item" href="#"><span>About us</span></a>
+            <a class="item" href="#"><span>Contact</span></a>
+            <a class="item" href="#"><span>Pass events</span></a>
+            <a href="javascript:void(0);" class="icon" onclick="editNav()"><i class="fa fa-bars"></i></a>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <main>
+
+        <!-- Hero -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-headline">US Natiowide<br>Game-a-Thon</h1>
+                <p class="hero-text">Do you live to game? Our next gaming event is now accepting reservationsfor players, but spots are limited.</p>
+                <button class="btn-signup modal-btn">Sign Up Now</button>
+            </div>
+            <div class="hero-img">
+                <img src="./assets/img/background/bg.jpg" alt="img" />
+            </div>
+            <button class="btn-signup modal-btn">Sign Up Now</button>
+        </div>
+
+        <!-- Form Modal -->
+        <div class="bground">
+            <div class="modal-main">
+                <span class="close"></span>
+                <form class="form" name="reserve" action="index.html" method="get" onsubmit="return validate();">
+                    <!--  Labels & Inputs -->
+                    <div class="formData">
+                        <label for="first">First Name</label>
+                        <br>
+                        <input class="text-control" type="text" id="first" name="first" minlength="2" placeholder="Tōru" />
+                        <span class="error-input" id="error-first"></span>
+                        <br>
+                    </div>
+                    <div class="formData">
+                        <label for="last">Last Name</label>
+                        <br>
+                        <input class="text-control" type="text" id="last" name="last" placeholder="Iwatani" />
+                        <span class="error-input" id="error-last"></span>
+                        <br>
+                    </div>
+                    <div class="formData">
+                        <label for="email">Email</label>
+                        <br>
+                        <input class="text-control" type="email" id="email" name="email" placeholder="tōru.iwatani@email.com" />
+                        <span class="error-input" id="error-email"></span>
+                        <br>
+                    </div>
+                    <div class="formData">
+                        <label for="birthdate">Birthdate</label>
+                        <br>
+                        <input class="text-control" type="date" id="birthdate" name="birthdate" />
+                        <span class="error-input" id="error-birthdate"></span>
+                        <br>
+                    </div>
+                    <div class="formData">
+                        <label for="quantity">How may tournaments have you attended?</label>
+                        <br>
+                        <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" placeholder="66">
+                        <span class="error-input" id="error-eventquantity"></span>
+                        <br>
+                    </div>
+                    <!-- Checkboxs -->
+                    <p class="text-label">Which location?</p>
+                    <div class="formData">
+                        <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
+                        <label class="checkbox-label" for="location1">
+                            <span class="checkbox-icon"></span>New York
+                        </label>
+                        <input class="checkbox-input" type="radio" id="location2" name="location" value="San Francisco" />
+                        <label class="checkbox-label" for="location2">
+                            <span class="checkbox-icon"></span>San Francisco
+                        </label>
+                        <input class="checkbox-input" type="radio" id="location3" name="location" value="Seattle" />
+                        <label class="checkbox-label" for="location3">
+                            <span class="checkbox-icon"></span>Seattle
+                        </label>
+                        <input class="checkbox-input" type="radio" id="location4" name="location" value="Chicago" />
+                        <label class="checkbox-label" for="location4">
+                            <span class="checkbox-icon"></span>Chicago
+                        </label>
+                        <input class="checkbox-input" type="radio" id="location5" name="location" value="Boston" />
+                        <label class="checkbox-label" for="location5">
+                            <span class="checkbox-icon"></span>Boston
+                        </label>
+                        <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland" />
+                        <label class="checkbox-label" for="location6">
+                            <span class="checkbox-icon"></span>Portland
+                        </label>
+                        <br>
+                        <span class="error-input" id="error-eventlocation"></span>
+                    </div>
+                    <div class="formData checkboxInputs">
+                        <input class="checkbox-input" type="checkbox" id="checkbox1" checked />
+                        <label class="checkbox2-label" for="checkbox1">
+                            <span class="checkbox-icon"></span>I have read and accepted the terms of use.
+                        </label>
+                        <span class="error-input" id="error-conditionsofuse"></span>
+                        <br>
+                        <input class="checkbox-input" type="checkbox" id="checkbox2" />
+                        <label class="checkbox2-label" for="checkbox2">
+                            <span class="checkbox-icon"></span>I would like to be notified of future events.
+                        </label>
+                        <br>
+                    </div>
+                    <!-- Button Submit -->
+                    <input class="btn-submit" type="submit" value="Go" />
+                </form>
+                <!-- Validation Message -->
+                <div class="modal-confirm" id="modal-confirm">
+                    <p class="msg-confirm" id="msg-confirm">Thank you for submiting your registration details</p>
+                    <button class="btn-closed" id="btn-closed">Close</button>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p class="copyrights">Copyright 2014 - 2020, GameOn Inc.</p>
+    </footer>
+
+    <!-- Script -->
+    <script src="./assets/js/index.js"></script>
+
+</body>
+
+</html>
